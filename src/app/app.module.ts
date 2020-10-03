@@ -1,4 +1,4 @@
-import { AuthInterceptor, AuthInterceptorProvider } from './../interceptors/auth-interceptor';
+import { AuthInterceptorProvider } from './../interceptors/auth-interceptor';
 import { ClienteService } from './../services/domain/cliente.service';
 import { AuthService } from './../services/auth.service';
 import { CategoriaService } from './../services/domain/categoria.service';
