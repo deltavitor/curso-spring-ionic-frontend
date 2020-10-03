@@ -9,7 +9,7 @@
 
 <ion-content padding>
   <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="showProdutos()">
+    <button ion-item *ngFor="let item of items" (click)="showProdutos(item.id)">
       <ion-thumbnail>
         <img src="assets/imgs/logo.png" alt="">
       </ion-thumbnail>
