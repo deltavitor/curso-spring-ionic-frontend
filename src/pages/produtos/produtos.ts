@@ -27,4 +27,8 @@ export class ProdutosPage {
     error => {});
   }
 
+  showDetail() {
+    this.navCtrl.push('ProdutoDetailPage');
+  }
+
 }
