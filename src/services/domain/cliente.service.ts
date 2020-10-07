@@ -1,5 +1,4 @@
 import { API_CONFIG } from './../../config/api.config';
-import { Observable } from 'rxjs/Rx';
 import { HttpClient } from '@angular/common/http';
 import { ClienteDTO } from '../../models/cliente.dto';
 import { Injectable } from '@angular/core';
@@ -12,8 +11,8 @@ export class ClienteService {
 
     }
 
-    findByEmail(email: string) : Observable<ClienteDTO> {
-        return this.http.get<ClienteDTO>(`${API_CONFIG.baseUrl}/clientes/email?value=${email}`);
+    findByEmail(email: string) {
+        return this.http.get(`${API_CONFIG.baseUrl}/clientes/email?value=${email}`);
     }
 
     insert(obj: ClienteDTO) {
