@@ -71,7 +71,7 @@ export class CartService {
         return cart;
     }
 
-    total() : number {
+    total(): number {
         let cart = this.getCart();
         let sum = 0;
         for (var i = 0;  i < cart.items.length; i++) {
