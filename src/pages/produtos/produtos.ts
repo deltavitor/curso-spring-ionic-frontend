@@ -59,6 +59,7 @@ export class ProdutosPage {
   doRefresh(refresher) {
     this.page = 0;
     this.items = [];
+    this.blockInfiteScroll = false;
     this.loadData();
     setTimeout(() => {
       refresher.complete();
