@@ -11,7 +11,9 @@ import { LoadingController } from 'ionic-angular/components/loading/loading-cont
 })
 export class ProdutosPage {
 
-  items: ProdutoDTO[];
+  items: ProdutoDTO[] = [];
+  page: number = 0;
+  blockInfiteScroll: boolean = false;
 
   constructor(
     public navCtrl: NavController,
@@ -23,9 +25,14 @@ export class ProdutosPage {
   loadData() {
     let categoria_id = this.navParams.get('categoria_id');
     let loader = this.presentLoading();
-    this.produtoService.findByCategoria(categoria_id)
+    this.produtoService.findByCategoria(categoria_id, this.page, 24)
     .subscribe(response => {
-      this.items = response['content'];
+      if (response['content'].length > 0) {
+        this.items = this.items.concat(response['content']);
+      }
+      else {
+        this.blockInfiteScroll = true;
+      }
       loader.dismiss();
     },
     error => {
@@ -50,10 +57,19 @@ export class ProdutosPage {
   }
 
   doRefresh(refresher) {
+    this.page = 0;
+    this.items = [];
+    this.loadData();
     setTimeout(() => {
-      if (refresher.cancel)
       refresher.complete();
     }, 1000);
   }
 
+  doInfinite(infiniteScroll) {
+    this.page++;
+    this.loadData();
+    setTimeout(() => {
+      infiniteScroll.complete();
+    }, 1000);
+  }
 }
